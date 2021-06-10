@@ -1,0 +1,205 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+    </title>
+    <style>
+        .jemis {
+            box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .60);
+        }
+
+        .btn {
+            box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .10);
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <!-- Favicon -->
+    <link rel="icon" href="<%=ResolveClientUrl("~/Content/img/brand/favicon.png") %>" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="<%=ResolveClientUrl("~/Content/vendor/nucleo/css/nucleo.css") %>" type="text/css">
+    <link rel="stylesheet" href="<%=ResolveClientUrl("~/Content/vendor/@fortawesome/fontawesome-free/css/all.min.css") %>" type="text/css">
+    <!-- Page plugins -->
+    <link rel="stylesheet" href="<%=ResolveClientUrl("~/Content/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") %>" type="text/css">
+    <!-- Page plugins -->
+    <link rel="stylesheet" href="<%=ResolveClientUrl("~/Content/webforms/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js") %>" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="<%=ResolveClientUrl("~/Content/css/argon.css?v=1.2.0") %>" type="text/css">
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Sidenav -->
+        <asp:ContentPlaceHolder ID="cphSidenav" runat="server"></asp:ContentPlaceHolder>
+        <!-- Main content -->
+        <div class="main-content" id="panel">
+            <!-- Topnav -->
+            <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Search form -->
+                        <div class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-alternative input-group-merge">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    </div>
+                                    <asp:TextBox CssClass="form-control" placeholder="Search" runat="server"></asp:TextBox>
+                                    <%--<input class="form-control" placeholder="Search" type="text">--%>
+                                </div>
+                            </div>
+                            <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <!-- Navbar links -->
+                        <ul class="navbar-nav align-items-center  ml-md-auto ">
+                            <li class="nav-item d-xl-none">
+                                <!-- Sidenav toggler -->
+                                <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                                    <div class="sidenav-toggler-inner">
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                        <i class="sidenav-toggler-line"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item d-sm-none">
+                                <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                                    <i class="ni ni-zoom-split-in"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                        <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="media align-items-center">
+                                        <span class="avatar avatar-sm rounded-circle">
+                                            <asp:Image ID="imgProfile" ImageUrl="~/Content/img/theme/ProfilePic.png" runat="server" CssClass=" " />
+                                            <%--<asp:Image ImageUrl="~/Content/img/theme/team-4.jpg" runat="server" />--%>
+                                        </span>
+                                        <div class="media-body  ml-2  d-none d-lg-block">
+                                            <span class="mb-0 text-sm  font-weight-bold">
+                                                <asp:Label ID="lblNameMassege" runat="server"></asp:Label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="dropdown-menu  dropdown-menu-right ">
+                                    <div class="dropdown-header noti-title">
+                                        <h6 class="text-overflow m-0">Welcome!</h6>
+                                    </div>
+                                    <asp:HyperLink runat="server" NavigateUrl="~/AdminPanel/AdminUser/AdminUserProfile.aspx" CssClass="dropdown-item">
+                                        <i class="ni ni-single-02"></i>
+                                        <span>My profile</span>
+                                    </asp:HyperLink>
+                                    <%--<asp:HyperLink runat="server" NavigateUrl="~/AdminPanel/AdminUser/AdminUserProfile.aspx" CssClass="dropdown-item">
+                                        <i class="ni ni-settings-gear-65"></i>
+                                        <span>Settings</span>
+                                    </asp:HyperLink>--%>
+                                    <%--<a href="#!" class="dropdown-item">
+                                        <i class="ni ni-calendar-grid-58"></i>
+                                        <span>Activity</span>
+                                    </a>
+                                    <a href="#!" class="dropdown-item">
+                                        <i class="ni ni-support-16"></i>
+                                        <span>Support</span>
+                                    </a>--%>
+                                    <div class="dropdown-divider"></div>
+                                    <%--<asp:HyperLink NavigateUrl="~/Login.aspx" CssClass="dropdown-item" runat="server">--%>
+                                    <asp:LinkButton CssClass="dropdown-item" runat="server" OnClick="btnLogOut_Click">
+                                        <i class="ni ni-user-run"></i>
+                                        <span>Logout</span>
+                                    </asp:LinkButton>
+
+                                    <%--</asp:HyperLink>--%>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Header -->
+            <!-- Header -->
+            <div class="header bg-primary pb-6">
+                <div class="container-fluid">
+                    <div class="header-body">
+                        <div class="row align-items-center py-4">
+                            <div class="col-lg-6 col-7">
+                                <%--<h6 class="h2 text-white d-inline-block mb-0">Default</h6>--%>
+                                <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                                    <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                        <li class="breadcrumb-item">
+                                            <asp:HyperLink NavigateUrl="~/HomePage.aspx" runat="server">
+                                                <i class="fas fa-home"></i>
+                                            </asp:HyperLink>
+                                        </li>
+
+                                        <asp:ContentPlaceHolder ID="cphBreadcrumSecond" runat="server"></asp:ContentPlaceHolder>
+
+                                        <asp:ContentPlaceHolder ID="cphBreadcrumThird" runat="server"></asp:ContentPlaceHolder>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <asp:ContentPlaceHolder ID="cphBreadcrumLast" runat="server"></asp:ContentPlaceHolder>
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- Card stats -->
+                    </div>
+                </div>
+            </div>
+            <!-- Page content -->
+            <div class="container-fluid mt--6">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="card">
+                            <div class="jemis card-body">
+                                <div class="card-header bg-transparent">
+                                    <h3 class="mb-0">
+                                        <asp:ContentPlaceHolder ID="cphTitleOfArea" runat="server"></asp:ContentPlaceHolder>
+                                    </h3>
+                                </div>
+                                <div class="card-body">
+                                    <asp:ContentPlaceHolder ID="cphMainArea" runat="server"></asp:ContentPlaceHolder>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer class="footer pt-0" style="margin-top: 10%;">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-6">
+                            <div class="copyright text-center  text-lg-left  text-muted">
+                                &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Darshan Book Bank</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </form>
+    <script src="<%=ResolveClientUrl("~/Content/vendor/jquery/dist/jquery.min.js") %>"></script>
+    <script src="<%=ResolveClientUrl("~/Content/vendor/bootstrap/dist/js/bootstrap.bundle.min.js") %>"></script>
+    <script src="<%=ResolveClientUrl("~/Content/vendor/js-cookie/js.cookie.js") %>"></script>
+    <script src="<%=ResolveClientUrl("~/Content/vendor/jquery.scrollbar/jquery.scrollbar.min.js") %>"></script>
+    <script src="<%=ResolveClientUrl("~/Content/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js") %>"></script>
+
+    <script src="<%=ResolveClientUrl("~/Content/vendor/chart.js/dist/Chart.min.js") %>"></script>
+    <script src="<%=ResolveClientUrl("~/Content/vendor/chart.js/dist/Chart.extension.js") %>"></script>
+
+    <script src="<%=ResolveClientUrl("~/Content/js/argon.js?v=1.2.0") %>"></script>
+</body>
+</html>
